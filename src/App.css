@@ -1,0 +1,47 @@
+* {
+  font-size: 18px;
+  font-family: "Source Code Pro", "Mallanna", monospace;
+  font-weight: 500;
+}
+
+.container {
+  height: 500px;
+  width: 850px;
+  margin-bottom: 38px;
+}
+
+.App {
+  padding: 10px 150px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: block;
+  font-style: italic;
+}
+
+.header {
+  background-color: #131313;
+  opacity: 0.9;
+  height: 80px;
+  width: 100%;
+}
+
+.bouton {
+  margin: 10px 0px;
+  height: auto;
+  padding: 5px 0px;
+  width: 180px;
+  letter-spacing: 4px;
+  border-radius: 8px solid #999999;
+  border: 1px solid #999999;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
