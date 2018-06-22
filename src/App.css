@@ -10,12 +10,25 @@
   margin-bottom: 38px;
 }
 
-.App {
-  padding: 10px 150px;
+.sep {
+  margin: 0px 35px;
+  border: 1px solid #999999;
+}
+
+.paragraphe {
+  padding: 20px;
 }
 
 .link {
   text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  padding: 0;
+  border-top: 1px solid;
+
+  margin-bottom: 0px;
 }
 
 .link:hover {
@@ -44,4 +57,11 @@
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 0px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 410px;
+    border-bottom: 1px solid;
+  }
 }

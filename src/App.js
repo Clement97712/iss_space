@@ -36,9 +36,6 @@ class App extends Component {
 
   render() {
     const coordonnees = [this.state.latitude, this.state.longitude];
-    const position = [0, 25.251];
-    const attribut =
-      '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
     const attri =
       "http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png";
     const attri2 =
@@ -48,7 +45,7 @@ class App extends Component {
       <div className="test">
         <div className="header" />
         <div className="App">
-          <div className="">
+          <div className="paragraphe">
             <p className="title">Qu'est ce que l'I.S.S</p>
             <p>
               I.S.S. (International Space Station en anglais et Station spatiale
@@ -67,16 +64,18 @@ class App extends Component {
               </a>
             </p>
           </div>
-          <p>
-            Les coordonnees de la station I.S.S.(International Space Station):
-          </p>
-          <p>latitude: {this.state.latitude}</p>
-          <p>longitude: {this.state.longitude}</p>
+          <hr className="sep" />
+          <div className="paragraphe">
+            <p>
+              Les coordonnees de la station I.S.S.(International Space Station):
+            </p>
+            <p>latitude: {this.state.latitude}</p>
+            <p>longitude: {this.state.longitude}</p>
 
-          <button className="bouton" onClick={this.currentPosition}>
-            Actualiser
-          </button>
-
+            <button className="bouton" onClick={this.currentPosition}>
+              Actualiser
+            </button>
+          </div>
           <Map center={coordonnees} zoom={3} className="container">
             <TileLayer attribution={attri2} url={attri} />
             <Marker position={coordonnees}>
@@ -86,7 +85,6 @@ class App extends Component {
             </Marker>
           </Map>
         </div>
-        <div className="header" />
       </div>
     );
   }
