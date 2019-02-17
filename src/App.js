@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import Time from "react-timestamp";
 //import { url } from "inspector";
 
 class App extends Component {
   state = {
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    timestamp: 0
   };
 
   isUpdate = () => {
@@ -17,7 +19,8 @@ class App extends Component {
         console.log(response.data);
         this.setState({
           latitude: response.data.latitude,
-          longitude: response.data.longitude
+          longitude: response.data.longitude,
+          timestamp: response.data.timestamp
         });
       })
       .catch(response => {
@@ -37,17 +40,20 @@ class App extends Component {
   render() {
     const coordonnees = [this.state.latitude, this.state.longitude];
     const attri =
-      "http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png";
+      "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.png";
     const attri2 =
       'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
+    const styles = {
+      font: "5px"
+    };
     return (
       <div className="test">
         <div className="header" />
         <div className="App">
           <div className="paragraphe">
             <p className="title">Qu'est ce que l'I.S.S</p>
-            <p>
+            <p className="sentence">
               I.S.S. (International Space Station en anglais et Station spatiale
               internationale en francais) est une station spatiale placée en
               orbite terrestre basse, occupée en permanence par un équipage
@@ -69,18 +75,21 @@ class App extends Component {
             <p>
               Les coordonnees de la station I.S.S.(International Space Station):
             </p>
-            <p>latitude: {this.state.latitude}</p>
-            <p>longitude: {this.state.longitude}</p>
-
+            <p className="sentence">latitude: {this.state.latitude}</p>
+            <p className="sentence">longitude: {this.state.longitude}</p>
+            <p className="sentence">
+              heure:{" "}
+              <Time time={this.state.timestamp} utc="true" format="full" />
+            </p>
             <button className="bouton" onClick={this.currentPosition}>
               Actualiser
             </button>
           </div>
-          <Map center={coordonnees} zoom={4} className="container">
-            <TileLayer attribution={attri2} url={attri} />
+          <Map center={coordonnees} zoom={2.5} className="container">
+            <TileLayer attribution={attri2} url={attri} style={styles} />
             <Marker position={coordonnees}>
               <Popup>
-                <span>position actuelle</span>
+                <span>Position Actuelle</span>
               </Popup>
             </Marker>
           </Map>

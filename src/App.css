@@ -2,16 +2,16 @@
   font-size: 18px;
   font-family: "Source Code Pro", "Mallanna", monospace;
   font-weight: 500;
+  margin: 0;
 }
 
 .container {
   height: 500px;
-  width: 850px;
   margin-bottom: 38px;
 }
 
 .sep {
-  margin: 0px 35px;
+  margin: 0px 25px;
   border: 1px solid #999999;
 }
 
@@ -19,16 +19,13 @@
   padding: 20px;
 }
 
-.link {
-  text-decoration: none;
+.sentence {
+  margin: 15px 0px;
+  font-weight: 400;
 }
 
-.container {
-  width: 100%;
-  padding: 0;
-  border-top: 1px solid;
-
-  margin-bottom: 0px;
+.link {
+  text-decoration: none;
 }
 
 .link:hover {
