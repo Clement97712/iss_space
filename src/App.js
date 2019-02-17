@@ -12,12 +12,12 @@ class App extends Component {
 
   isUpdate = () => {
     axios
-      .get("https://api.open-notify.org/iss-now.json")
+      .get("https://api.wheretheiss.at/v1/satellites/25544")
       .then(response => {
-        console.log(response.data.iss_position);
+        console.log(response.data);
         this.setState({
-          latitude: response.data.iss_position.latitude,
-          longitude: response.data.iss_position.longitude
+          latitude: response.data.latitude,
+          longitude: response.data.longitude
         });
       })
       .catch(response => {
@@ -37,7 +37,7 @@ class App extends Component {
   render() {
     const coordonnees = [this.state.latitude, this.state.longitude];
     const attri =
-      "http://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background{z}/{x}/{y}.png";
+      "http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png";
     const attri2 =
       'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
@@ -76,7 +76,7 @@ class App extends Component {
               Actualiser
             </button>
           </div>
-          <Map center={coordonnees} zoom={3} className="container">
+          <Map center={coordonnees} zoom={4} className="container">
             <TileLayer attribution={attri2} url={attri} />
             <Marker position={coordonnees}>
               <Popup>
